@@ -15,7 +15,7 @@ func main() {
 		if err != nil {
 
 		}
-		return c.SendString("DOcker Hello from go running on: " + hostname)
+		return c.SendString("Docker Hello from go running on: " + hostname)
 	})
 
 	app.Listen(":8080")
