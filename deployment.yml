@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fiber-app
+  labels:
+    app: fiber-app
+spec:
+  replicas: 2  # Number of replicas/pods
+  selector:
+    matchLabels:
+      app: fiber-app
+  template:
+    metadata:
+      labels:
+        app: fiber-app
+    spec:
+      containers:
+      - name: fiber-app
+        image: registry.digitalocean.com/nooka-docker-registry/fiber-hostname-app:v2  # Replace with your Docker image
+        ports:
+        - containerPort: 8080
+        env:
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
