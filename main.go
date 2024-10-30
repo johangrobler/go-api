@@ -15,7 +15,7 @@ func main() {
 		if err != nil {
 
 		}
-		return c.SendString("Go running on: " + hostname)
+		return c.SendString("Go fiber is running on: " + hostname)
 	})
 
 	app.Listen(":8080")
